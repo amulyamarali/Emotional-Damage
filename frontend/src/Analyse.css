@@ -1,0 +1,62 @@
+
+#graph-ctn {
+	display: flex;
+	flex-direction: row;
+	margin-top: 3rem;
+}
+
+#Analyse > #graph-ctn > #bar-ctn {
+	width: 40vw;
+	margin: auto;
+}
+#Analyse > #graph-ctn > #doughnut-ctn {
+	width: 30vw;
+	margin: auto;
+}
+
+#analyse-btn-ctn {
+	/* background-color: #10437C; */
+	/* border: 1px solid #10437C; */
+	height: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+#analyse-btn-ctn:hover {
+	background-color: #10437C;
+	transition: all 0.2s ease;
+	color: #CCE4EE;
+}
+
+#Analyse > #input-ctn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10vh;
+	border: 1px solid #10437C;
+	width: fit-content;
+	/* height: 4rem; */
+	padding-left: 0.5rem;
+	padding-right: 1rem;
+	border-radius: 100px;
+}
+
+#Analyse > #input-ctn > input {
+	/* height: 2.5rem; */
+	padding: 1rem;
+	width: 50vw;
+	border-radius: 100px;
+	outline: none;
+	border: none;
+	/* border: 1px solid #10437C; */
+	color: #10437C;
+	font-family: 'Montserrat';
+}
