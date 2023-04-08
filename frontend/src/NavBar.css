@@ -1,9 +1,15 @@
-.NavBar > p {
+.NavBar > #left > p {
 	font-weight: 300;
+	color: #CCE4EE;
+}
+
+.NavBar > #right > p {
+	font-weight: 300;
+	color: #CCE4EE;
 }
 
 .NavBar {
-	background-color: white;
+	background-color: #10437C;
 	height: 6rem;
 	margin: 0;
 	top: 0;
