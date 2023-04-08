@@ -4,19 +4,19 @@
     "name" : "Emotional damage",
     "browser_action" : {
         "default_popup" : "index.html",
-        "default_title" : "Sustain4ward"
+        "default_title" : "Emotional damage"
     },
     "content_scripts" : [
         {
-            "matches" : ["https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"],
+            "matches" : ["https://*/*","http://*/*"],
     
-            "js" : ["parseproduct.js"]
+            "js" : ["logic.js"]
         }
     ],
     "permissions":[
         "tabs",
         "windows",
         "notifications",
-        "https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"
+        "https://*/*","http://*/*"
     ]
 }
