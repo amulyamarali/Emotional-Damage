@@ -4,6 +4,12 @@ import './Analyse.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import Divider from '@mui/material/Divider';
+
 import {Bar, Doughnut} from 'react-chartjs-2'
 import {
 	Chart as ChartJS,
@@ -79,30 +85,50 @@ const Analyse = ()=> {
 	const [commentData, setCommentData] = useState([1, 2, 2, 3, 1, 2, 3, 1, 2, 3, 1])
 
 	const [forBar, setForBar] = useState([2, 3, 1, 4, 5])
-	const idk = []
 
 	let temp = getBarData(forBar)
 	const [barData, setBarData] = useState(temp);
+	const [commentDisp, setCommentDisp] = useState([[], [], [], [], []])
 
 	const fetchFromBackend = (url)=> {
-		setBarData(getBarData([1, 5, 3, 2, 3]))
-		return;
-		let inp = document.getElementById('inp-in')
-		axios.post("http://172.16.128.97:5000/", {
-			"url": ""
+		// setBarData(getBarData([1, 5, 3, 2, 3]))
+		// return;
+		let inp = document.getElementById('url-in')
+		console.log(inp.value)
+		axios.post("http://172.16.128.28:5000/", {
+			"url": inp.value
 		})
 		.then((res)=>{
 			// console.log(res["data"][0], res["data"][1])
 			let temp = [0, 0, 0, 0, 0];
-			res["data"][1].forEach(e=>{
-				temp[e-1] += 1
+			let commentDispTemp = [[], [], [], [], []]
+			res["data"].forEach(e=>{
+				commentDispTemp[e[1]-1].push(e[0])
+				temp[e[1]-1] += 1
 			})
+			setCommentDisp(commentDispTemp)
 
 			let temp2 = getBarData(temp)
 			setBarData(temp2)
 			// console.log(JSON.parse(res["data"]))
 		})
 		// console.log('adfkndaskf')
+	}
+
+	// const getSliderValue = (value) =>{
+	// 	return value
+	// }
+
+	const getCommentDisp = (val) => {
+		let temp = []
+		let slider = document.getElementById('slider')
+		let temp2 = commentDisp[val]
+		temp2.forEach(e=>{
+			temp.push(<ListItem>
+				{e}
+			</ListItem>)
+			temp.push(<Divider></Divider>)
+		})
 	}
 
 	return (
@@ -127,6 +153,28 @@ const Analyse = ()=> {
 						data={barData}
 						options={DoughnutOptions}
 					></Doughnut>
+				</div>
+			</div>
+			<div id='comdisp-ctn'>
+				<p>Comments</p>
+				<Box sx={{ width: 300 }}>
+					<Slider
+						aria-label="Temperature"
+						defaultValue={30}
+						getAriaValueText={getCommentDisp}
+						valueLabelDisplay="on"
+						step={1}
+						marks
+						min={1}
+						max={5}
+					/>
+				</Box>
+				<div id='comdisp'>
+					<Box sx={{ width: '100%' }}>
+						<List>
+							{getCommentDisp()}
+						</List>
+					</Box>
 				</div>
 			</div>
 		</div>

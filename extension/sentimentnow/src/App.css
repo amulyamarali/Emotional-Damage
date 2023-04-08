@@ -1,7 +1,40 @@
-.App {
-  text-align: center;
+#App {
+  /* text-align: center; */
+  /* background-color: #CCE4EE; */
+  width: 300px;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat';
+  flex-direction: column;
 }
 
+#App > p {
+  color: #10437C;
+  font-size: 2rem;
+}
+
+#analyse-btn-ctn {
+	/* background-color: #10437C; */
+	border: 1px solid #10437C;
+	height: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+#analyse-btn-ctn:hover {
+	background-color: #10437C;
+	transition: all 0.2s ease;
+	color: #CCE4EE;
+}
+
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +68,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
