@@ -1,0 +1,22 @@
+{
+    "manifest_version" : 2,
+    "version" : "1.0",
+    "name" : "Emotional damage",
+    "browser_action" : {
+        "default_popup" : "index.html",
+        "default_title" : "Sustain4ward"
+    },
+    "content_scripts" : [
+        {
+            "matches" : ["https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"],
+    
+            "js" : ["parseproduct.js"]
+        }
+    ],
+    "permissions":[
+        "tabs",
+        "windows",
+        "notifications",
+        "https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"
+    ]
+}
