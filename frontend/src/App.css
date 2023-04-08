@@ -1,4 +1,23 @@
-.App {
+.App > #heading-img-ctn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+
+.App > #heading-img-ctn > img {
+  transform: scale(0.8);
+}
+
+.App > #heading-img-ctn > h1 {
+  margin-left: 10rem;
+  font-size: 3rem;
+  color: #10437C;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +54,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

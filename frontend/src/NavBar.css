@@ -1,0 +1,43 @@
+.NavBar > p {
+	font-weight: 300;
+}
+
+.NavBar {
+	background-color: white;
+	height: 6rem;
+	margin: 0;
+	top: 0;
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 10;
+  }
+  
+  #left {
+	display: flex;
+	width: 40%;
+	justify-content: space-around;
+	height: 4rem;
+	flex-direction: row;
+	align-items: center;
+	z-index: 11;
+  }
+  
+  #right {
+	margin-right: 5rem;
+	z-index: 11;
+  }
+  
+  #title {
+	font-size: 1.5rem;
+	z-index: 11;
+  }
+  
+  .NavbarText {
+	color: #10437C;
+	font-size: 1.2rem;
+	cursor: pointer;
+	z-index: 11;
+  }
