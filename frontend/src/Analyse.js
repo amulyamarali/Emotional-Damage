@@ -82,7 +82,7 @@ const getBarData = (forBar)=>{
 const Analyse = ()=> {
 	
 	const navigate = useNavigate();
-	const [commentData, setCommentData] = useState([1, 2, 2, 3, 1, 2, 3, 1, 2, 3, 1])
+	const [commentData, setCommentData] = useState([])
 
 	const [forBar, setForBar] = useState([2, 3, 1, 4, 5])
 
@@ -107,12 +107,13 @@ const Analyse = ()=> {
 			let ind;
 			let comments = (res["data"])[0]
 			let scores = (res["data"])[1]
+			setCommentData(scores)
 			for (let i=0; i<scores.length; i++){
 				ind = scores[i]-1
 				initVals[ind] += 1
 				// console.log(ind)
 			}
-			console.log('testing', initVals)
+			// console.log('testing', initVals)
 
 			// res["data"][1].forEach((e, i)=>{
 			// 	// commentDispTemp[e[1]-1].push(e[0])
@@ -122,6 +123,7 @@ const Analyse = ()=> {
 
 			let temp2 = getBarData(initVals)
 			setBarData(temp2)
+			setCommentDisp(comments)
 			// console.log(JSON.parse(res["data"]))
 		})
 		// console.log('adfkndaskf')
@@ -130,21 +132,24 @@ const Analyse = ()=> {
 	// const getSliderValue = (value) =>{
 	// 	return value
 	// }
-	const setRangeVal = () => {
-
+	const setRangeVal = (e) => {
+		console.log('changed', e.target.value)
+		setRange(e.target.value)
 	}
 
 	const getCommentDisp = (val) => {
-		// console.log(commentDisp)
-		// let temp = []
-		// let slider = document.getElementById('slider')
-		// let temp2 = commentDisp[0]
-		// temp2.forEach(e=>{
-		// 	temp.push(<ListItem>
-		// 		{e}
-		// 	</ListItem>)
-		// 	temp.push(<Divider></Divider>)
-		// })
+		let out = [];
+		for (let i=0; i<commentDisp.length; i++){
+			if (commentData[i] == range){
+				out.push(
+					<ListItem key={2*i}>
+						<p dangerouslySetInnerHTML={{__html: commentDisp[i]}}></p>
+					</ListItem>
+					)
+				out.push(<Divider key={2*i+1}></Divider>)
+			}
+		}
+		return out
 	}
 
 	return (
@@ -177,7 +182,8 @@ const Analyse = ()=> {
 					<Slider
 						aria-label="Temperature"
 						defaultValue={30}
-						getAriaValueText={getCommentDisp}
+						// getAriaValueText={getCommentDisp}
+						onChange={setRangeVal}
 						valueLabelDisplay="on"
 						step={1}
 						marks
@@ -188,7 +194,7 @@ const Analyse = ()=> {
 				<div id='comdisp'>
 					<Box sx={{ width: '100%' }}>
 						<List>
-							{getCommentDisp(2)}
+							{getCommentDisp()}
 						</List>
 					</Box>
 				</div>
