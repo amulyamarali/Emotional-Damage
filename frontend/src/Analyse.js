@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams} from 'react-router-dom'
 import NavBar from './NavBar';
 import './Analyse.css'
 import { useState, useEffect } from 'react';
@@ -84,7 +84,10 @@ const Analyse = ()=> {
 	const navigate = useNavigate();
 	const [commentData, setCommentData] = useState([])
 
-	const [forBar, setForBar] = useState([2, 3, 1, 4, 5])
+	const [searchParams] = useSearchParams();
+  	// console.log(searchParams, searchParams.get('url'));
+
+	const [forBar, setForBar] = useState([0, 0, 0, 0, 0])
 
 	let temp = getBarData(forBar)
 	const [barData, setBarData] = useState(temp);
@@ -96,9 +99,10 @@ const Analyse = ()=> {
 		// setBarData(getBarData([1, 5, 3, 2, 3]))
 		// return;
 		let inp = document.getElementById('url-in')
-		console.log(inp.value)
+
+		// console.log(inp.value)
 		axios.post("http://172.16.128.15:5000/", {
-			"url": inp.value
+			"url": url?url:inp.value
 		})
 		.then((res)=>{
 			console.log(res["data"][0], res["data"][1])
@@ -126,8 +130,20 @@ const Analyse = ()=> {
 			setCommentDisp(comments)
 			// console.log(JSON.parse(res["data"]))
 		})
-		// console.log('adfkndaskf')
+		
 	}
+useEffect(()=>{
+	setTimeout(() => {
+		if (searchParams.get('url')){
+			let inp = document.getElementById('url-in')
+			if (inp){
+				inp.value = searchParams.get('url')
+				fetchFromBackend(searchParams.get('url'))
+			}
+			// console.log('fuiyoooh', searchParams.get('url'))
+		}
+	}, 100);
+},[])
 
 	// const getSliderValue = (value) =>{
 	// 	return value

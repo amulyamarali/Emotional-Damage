@@ -125,7 +125,7 @@ function App() {
   function redirect2web(){
     getopenedurl();
     setTimeout(() => {
-      window.open("localhost:3000/analyse/?url="+userurl,"__blank")
+      window.open("http://localhost:3000/analyse/?url="+userurl,"__blank")
     }, 80);
     
   
