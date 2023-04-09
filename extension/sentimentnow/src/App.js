@@ -78,7 +78,7 @@ function App() {
   const [loading, setloading] = useState(false);
   let userurl=null;
 
-  const [forBar, setForBar] = useState([2, 3, 1, 4, 5])
+  const [forBar, setForBar] = useState([0,0,0,0,0])
 
 	let temp = getBarData(forBar)
 	const [barData, setBarData] = useState(temp);
