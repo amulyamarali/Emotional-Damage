@@ -75,6 +75,7 @@ const getBarData = (forBar)=>{
 
 function App() {
   const [first, setfirst] = useState(1);
+  const [loading, setloading] = useState(false);
   let userurl=null;
 
   const [forBar, setForBar] = useState([2, 3, 1, 4, 5])
@@ -108,11 +109,25 @@ function App() {
     
     }
 
+	function startgif(){
+		setloading(true)
+	}
+	function stopgif(){
+		setloading(false)
+
+	}
+
   function openurlsendback(){
     getopenedurl();
+	startgif();
     setTimeout(() => {
       posttobknd({"url" : userurl})
+	 
+	  
     }, 80);
+	setTimeout(() => {
+		stopgif();
+	}, 1250);
     
   }
 
@@ -148,6 +163,9 @@ function App() {
       <p  id='analyse-btn' onClick={redirect2web}>Go to website</p>
 		
 		</div>
+		{loading?<img width={50} src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif" >
+
+</img>:<></>}
       <Bar
         data={barData}
         options={barOptions}
