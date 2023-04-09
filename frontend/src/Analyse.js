@@ -101,16 +101,26 @@ const Analyse = ()=> {
 			"url": inp.value
 		})
 		.then((res)=>{
-			// console.log(res["data"][0], res["data"][1])
-			let temp = [0, 0, 0, 0, 0];
-			let commentDispTemp = [[], [], [], [], []]
-			res["data"].forEach(e=>{
-				commentDispTemp[e[1]-1].push(e[0])
-				temp[e[1]-1] += 1
-			})
-			setCommentDisp(commentDispTemp)
+			console.log(res["data"][0], res["data"][1])
+			let c = 0;
+			let initVals = [0, 0, 0, 0, 0];
+			let ind;
+			let comments = (res["data"])[0]
+			let scores = (res["data"])[1]
+			for (let i=0; i<scores.length; i++){
+				ind = scores[i]-1
+				initVals[ind] += 1
+				// console.log(ind)
+			}
+			console.log('testing', initVals)
 
-			let temp2 = getBarData(temp)
+			// res["data"][1].forEach((e, i)=>{
+			// 	// commentDispTemp[e[1]-1].push(e[0])
+			// 	temp[e[1]-1] += 1
+			// })
+			// setCommentDisp(commentDispTemp)
+
+			let temp2 = getBarData(initVals)
 			setBarData(temp2)
 			// console.log(JSON.parse(res["data"]))
 		})
@@ -125,15 +135,16 @@ const Analyse = ()=> {
 	}
 
 	const getCommentDisp = (val) => {
-		let temp = []
-		let slider = document.getElementById('slider')
-		let temp2 = commentDisp[0]
-		temp2.forEach(e=>{
-			temp.push(<ListItem>
-				{e}
-			</ListItem>)
-			temp.push(<Divider></Divider>)
-		})
+		// console.log(commentDisp)
+		// let temp = []
+		// let slider = document.getElementById('slider')
+		// let temp2 = commentDisp[0]
+		// temp2.forEach(e=>{
+		// 	temp.push(<ListItem>
+		// 		{e}
+		// 	</ListItem>)
+		// 	temp.push(<Divider></Divider>)
+		// })
 	}
 
 	return (
