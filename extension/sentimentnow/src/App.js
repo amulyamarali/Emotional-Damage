@@ -89,19 +89,20 @@ function App() {
   }
   
   function posttobknd(obj){
-    let backurl = "http://172.16.128.2  8:5000/";
+    let backurl = "http://172.16.128.15:5000/";
     console.log("sending to bakck",obj["url"])
     // setBarData(getBarData([1, 5, 3, 2, 3]))
 		// return;
     axios.post(backurl,obj,{headers : {"Content-Type" : "application/json"}})
     .then(res=>{
       //fetching from backend code
-        let temp = [0, 0, 0, 0, 0];
+		console.log(res)
+        let temp3 = [0, 0, 0, 0, 0];
         res["data"][1].forEach(e=>{
-          temp[e-1] += 1
+          temp3[e-1] += 1
         })
 
-        let temp2 = getBarData(temp)
+        let temp2 = getBarData(temp3)
         setBarData(temp2)
     })
     
@@ -121,6 +122,10 @@ function App() {
     openurlsendback();
   
   }
+
+//   if (first == 1){
+// 	  wr()
+//   }
     
 
   return (
@@ -128,12 +133,12 @@ function App() {
       {/* <p>I am sathvik {first}</p> */}
       <p>Damage</p>
       <div id='analyse-btn-ctn'>
-					<p onClick={wr} id='analyse-btn'>Analyse</p>
-			</div>
+		<p  id='analyse-btn' onClick={wr}>Analyse</p>
+		</div>
       <Bar
         data={barData}
         options={barOptions}
-			></Bar>
+		></Bar>
     </div>
   );
 }

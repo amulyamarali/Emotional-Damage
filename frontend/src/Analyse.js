@@ -88,14 +88,16 @@ const Analyse = ()=> {
 
 	let temp = getBarData(forBar)
 	const [barData, setBarData] = useState(temp);
-	const [commentDisp, setCommentDisp] = useState([[], [], [], [], []])
+	const [commentDisp, setCommentDisp] = useState([])
+	const [range, setRange] = useState(0)
+
 
 	const fetchFromBackend = (url)=> {
 		// setBarData(getBarData([1, 5, 3, 2, 3]))
 		// return;
 		let inp = document.getElementById('url-in')
 		console.log(inp.value)
-		axios.post("http://172.16.128.28:5000/", {
+		axios.post("http://172.16.128.15:5000/", {
 			"url": inp.value
 		})
 		.then((res)=>{
@@ -118,11 +120,14 @@ const Analyse = ()=> {
 	// const getSliderValue = (value) =>{
 	// 	return value
 	// }
+	const setRangeVal = () => {
+
+	}
 
 	const getCommentDisp = (val) => {
 		let temp = []
 		let slider = document.getElementById('slider')
-		let temp2 = commentDisp[val]
+		let temp2 = commentDisp[0]
 		temp2.forEach(e=>{
 			temp.push(<ListItem>
 				{e}
@@ -172,7 +177,7 @@ const Analyse = ()=> {
 				<div id='comdisp'>
 					<Box sx={{ width: '100%' }}>
 						<List>
-							{getCommentDisp()}
+							{getCommentDisp(2)}
 						</List>
 					</Box>
 				</div>
