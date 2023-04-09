@@ -83,6 +83,7 @@ const Analyse = ()=> {
 	
 	const navigate = useNavigate();
 	const [commentData, setCommentData] = useState([])
+	const [loading, setloading] = useState(false); //for gif
 
 	const [searchParams] = useSearchParams();
   	// console.log(searchParams, searchParams.get('url'));
@@ -98,15 +99,17 @@ const Analyse = ()=> {
 	const fetchFromBackend = (url)=> {
 		// setBarData(getBarData([1, 5, 3, 2, 3]))
 		// return;
+		
+		setloading(true);
 		let inp = document.getElementById('url-in')
 
 		// console.log(inp.value)
 		axios.post("http://172.16.128.15:5000/", {
-			"url": url?url:inp.value
+			"url": inp.value
 		})
 		.then((res)=>{
-			console.log(res["data"][0], res["data"][1])
-			let c = 0;
+			// console.log(res["data"][0], res["data"][1])
+			
 			let initVals = [0, 0, 0, 0, 0];
 			let ind;
 			let comments = (res["data"])[0]
@@ -129,6 +132,11 @@ const Analyse = ()=> {
 			setBarData(temp2)
 			setCommentDisp(comments)
 			// console.log(JSON.parse(res["data"]))
+			setloading(false);
+		})
+		.catch(e=>{
+			console.error(e)
+			setloading(false)
 		})
 		
 	}
@@ -138,7 +146,7 @@ useEffect(()=>{
 			let inp = document.getElementById('url-in')
 			if (inp){
 				inp.value = searchParams.get('url')
-				fetchFromBackend(searchParams.get('url'))
+				fetchFromBackend()
 			}
 			// console.log('fuiyoooh', searchParams.get('url'))
 		}
@@ -149,7 +157,7 @@ useEffect(()=>{
 	// 	return value
 	// }
 	const setRangeVal = (e) => {
-		console.log('changed', e.target.value)
+		// console.log('changed', e.target.value)
 		setRange(e.target.value)
 	}
 
@@ -178,20 +186,27 @@ useEffect(()=>{
 					<p onClick={fetchFromBackend} id='analyse-btn'>Analyse</p>
 				</div>
 			</div>
-			<div id='graph-ctn'>
-				<div id='bar-ctn'>
-					<Bar
-						data={barData}
-						options={barOptions}
-					></Bar>
+			{loading?
+				<div id='graph-ctn'>
+					<img id='giffy' width={100} src="https://cdn.pixabay.com/animation/2022/10/11/03/16/03-16-39-160_512.gif"/>
 				</div>
-				<div id='doughnut-ctn'>
-					<Doughnut
-						data={barData}
-						options={DoughnutOptions}
-					></Doughnut>
+				:
+				<div id='graph-ctn'>
+					<div id='bar-ctn'>
+						<Bar
+							data={barData}
+							options={barOptions}
+						></Bar>
+					</div>
+					<div id='doughnut-ctn'>
+						<Doughnut
+							data={barData}
+							options={DoughnutOptions}
+						></Doughnut>
+					</div>
 				</div>
-			</div>
+			}
+			
 			<div id='comdisp-ctn'>
 				<p>Comments</p>
 				<Box sx={{ width: 300 }}>

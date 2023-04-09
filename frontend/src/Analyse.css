@@ -8,6 +8,11 @@
 	font-size: 2rem;
 }
 
+#giffy{
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #comdisp {
 	background-color: #CCE4EE;
 	width: 80vw;
