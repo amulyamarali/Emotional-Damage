@@ -10,8 +10,10 @@
 
 #comdisp {
 	background-color: #CCE4EE;
-	width: 100vw;
+	width: 80vw;
 	font-size: 1rem;
+	padding: 1rem;
+	border-radius: 30px;
 }
 
 #graph-ctn {
