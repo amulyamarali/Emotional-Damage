@@ -93,7 +93,7 @@ const Analyse = ()=> {
 	let temp = getBarData(forBar)
 	const [barData, setBarData] = useState(temp);
 	const [commentDisp, setCommentDisp] = useState([])
-	const [range, setRange] = useState(0)
+	const [range, setRange] = useState(3)
 
 
 	const fetchFromBackend = (url)=> {
@@ -133,6 +133,7 @@ const Analyse = ()=> {
 			setCommentDisp(comments)
 			// console.log(JSON.parse(res["data"]))
 			setloading(false);
+			setRange(3)
 		})
 		.catch(e=>{
 			console.error(e)
