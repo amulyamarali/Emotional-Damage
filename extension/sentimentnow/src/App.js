@@ -105,6 +105,7 @@ function App() {
 
         let temp2 = getBarData(temp3)
         setBarData(temp2)
+		stopgif()
     })
     
     }
@@ -114,7 +115,6 @@ function App() {
 	}
 	function stopgif(){
 		setloading(false)
-
 	}
 
   function openurlsendback(){
@@ -125,9 +125,9 @@ function App() {
 	 
 	  
     }, 80);
-	setTimeout(() => {
-		stopgif();
-	}, 1250);
+	// setTimeout(() => {
+	// 	stopgif();
+	// }, 1250);
     
   }
 
@@ -146,19 +146,19 @@ function App() {
   
   }
 
-//   if (first == 1){
-// 	  wr()
-//   }
+  if (first == 1){
+	  wr()
+  }
     
 
   return (
     <div id='App'>
       {/* <p>I am sathvik {first}</p> */}
       <p>Damage</p>
-      <div id='analyse-btn-ctn'>
+      {/* <div id='analyse-btn-ctn'>
 		<p  id='analyse-btn' onClick={wr}>Analyse</p>
-		
-		</div><br></br>
+		</div> */}
+		<br></br>
       <div id='analyse-btn-ctn'>
       <p  id='analyse-btn' onClick={redirect2web}>Go to website</p>
 		
