@@ -122,6 +122,14 @@ function App() {
     openurlsendback();
   
   }
+  function redirect2web(){
+    getopenedurl();
+    setTimeout(() => {
+      window.open("localhost:3000/analyse/?url="+userurl,"__blank")
+    }, 80);
+    
+  
+  }
 
 //   if (first == 1){
 // 	  wr()
@@ -134,6 +142,11 @@ function App() {
       <p>Damage</p>
       <div id='analyse-btn-ctn'>
 		<p  id='analyse-btn' onClick={wr}>Analyse</p>
+		
+		</div><br></br>
+      <div id='analyse-btn-ctn'>
+      <p  id='analyse-btn' onClick={redirect2web}>Go to website</p>
+		
 		</div>
       <Bar
         data={barData}
