@@ -185,6 +185,9 @@ const Analyse = ()=> {
 						// getAriaValueText={getCommentDisp}
 						onChange={setRangeVal}
 						valueLabelDisplay="on"
+						valueLabelFormat={(n)=>{
+							return ["Terrible", "Unhappy", "Neutral", "Happy", "Awesome"][n-1]
+						}}
 						step={1}
 						marks
 						min={1}
