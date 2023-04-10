@@ -106,9 +106,9 @@ def comments(channel_ID, to_csv = False):
     for i in range(0,len(response_comm['items'])):
         res = response_comm['items'][i]
         result = res['snippet']['topLevelComment']['snippet']['textDisplay']
-        print("printing comment",result)
+        # print("printing comment",result)
         comments.append(result)
-    print(comments)
+    # print(comments)
     print(len(comments))
 
     df = pd.DataFrame(comments,columns=['review'])
@@ -150,7 +150,7 @@ def main():
     # c,s = comments('kffacxfA7G4')
     # print(request.json['url'])
     url = request.json['url']
-    # print("printing_url",url)
+    print("printing_url",url)
 
     # Send a GET request to the page
     response = requests.get(url)

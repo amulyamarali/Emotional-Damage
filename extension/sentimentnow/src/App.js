@@ -90,7 +90,7 @@ function App() {
   }
   
   function posttobknd(obj){
-    let backurl = "http://172.16.128.15:5000/";
+    let backurl = "http://192.168.3.3:5000/";
     console.log("sending to bakck",obj["url"])
     // setBarData(getBarData([1, 5, 3, 2, 3]))
 		// return;

@@ -104,7 +104,7 @@ const Analyse = ()=> {
 		let inp = document.getElementById('url-in')
 
 		// console.log(inp.value)
-		axios.post("http://172.16.128.15:5000/", {
+		axios.post("http://192.168.3.3:5000/", {
 			"url": inp.value
 		})
 		.then((res)=>{
