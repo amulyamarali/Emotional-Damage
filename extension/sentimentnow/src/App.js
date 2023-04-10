@@ -154,7 +154,7 @@ function App() {
   return (
     <div id='App'>
       {/* <p>I am sathvik {first}</p> */}
-      <p>Damage</p>
+      <p>Sentiment Now</p>
       {/* <div id='analyse-btn-ctn'>
 		<p  id='analyse-btn' onClick={wr}>Analyse</p>
 		</div> */}
